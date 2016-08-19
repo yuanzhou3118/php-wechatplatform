@@ -1,0 +1,24 @@
+{
+    "name": "zhoucc/php-wechatplatform",
+    "description": "In order to develop weChat platform",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zhou",
+            "email": "zhouyuan3118@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ford\\Escape\\": "src/Ford/Escape",
+            "Ford\\Fusion\\": "src/Ford/Fusion",
+            "Ford\\Focus\\": "src/Ford/Focus",
+            "Ford\\Fiesta\\": "src/Ford/Fiesta"
+        }
+    }
+}
