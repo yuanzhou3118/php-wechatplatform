@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+        <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    </head>
+    <body>
+    <div id='aaa'></div>
+    <div id='bbb'></div>
+    <div id='ccc'></div>
+    <div id='ddd'><img src="" width="320" /></div>
+    <div id='eee'></div>
+        <script type="text/javascript">
+            $(function(){
+                
+                $.ajax({
+                    'url' : 'http://www.dangdaimingshi.com/ddmswechat/get_signature.php?signurl='+encodeURIComponent(location.href),
+                    'type' : 'GET',
+                    'success' : function(data){
+                        var jdata = $.parseJSON(data);
+                        //console.log(jdata);
+                        if(jdata.appId){
+                            var conObj = {
+                                //debug : true,
+                                appId : jdata.appId,
+                                timestamp : jdata.timestamp,
+                                nonceStr : jdata.nonceStr,
+                                signature : jdata.signature,
+                                jsApiList : ['onMenuShareTimeline','onMenuShareAppMessage']
+                            }
+
+                            wx.config(conObj);
+
+                            wx.ready(function(){
+                                wx.onMenuShareTimeline({
+                                    title: 'this is title',
+                                    link: location.href,
+                                    imgUrl: 'http://glp.nurunci.com/mobile/static/images/share.jpg',
+                                    success: function () { 
+                                        
+                                    },
+                                    cancel: function () { 
+                                        
+                                    }
+                                });
+                            });
+
+                            wx.error(function(res){
+                                //alert(res);
+                            });
+
+                        }
+
+                    }
+                });
+
+
+            });
+        </script>
+    </body>
+</html>
